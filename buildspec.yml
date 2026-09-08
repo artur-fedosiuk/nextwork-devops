@@ -7,7 +7,7 @@ phases:
   pre_build:
     commands:
       - echo Logging in to AWS CodeArtifact...
-      - CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain nextwork --domain-owner 829772412896 --region eu-south-1 --query authorizationToken --output text`
+      - CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain nextork --domain-owner 829772412896 --region eu-south-1 --query authorizationToken --output text`
       - export CODEARTIFACT_AUTH_TOKEN
   build:
     commands:
@@ -18,7 +18,10 @@ phases:
       - echo Build completed on `date`
       - echo Packaging artifacts...
       - mvn package -s settings.xml
+
 artifacts:
   files:
     - target/*.war
-  discard-paths: no
+  discard-paths: nogit add buildspec.yml
+git commit -m "Fix CodeArtifact domain name to nextork"
+git push
