@@ -22,6 +22,4 @@ phases:
 artifacts:
   files:
     - target/*.war
-  discard-paths: nogit add buildspec.yml
-git commit -m "Fix CodeArtifact domain name to nextork"
-git push
+  discard-paths: no
