@@ -4,6 +4,10 @@ files:
   - source: /target/nextwork-web-project.war
     destination: /usr/share/tomcat/webapps/
 hooks:
+  ApplicationStop:
+    - location: scripts/stop_server.sh
+      timeout: 300
+      runas: root
   BeforeInstall:
     - location: scripts/install_dependencies.sh
       timeout: 300
@@ -12,14 +16,3 @@ hooks:
     - location: scripts/start_server.sh
       timeout: 300
       runas: root
-  ApplicationStop:
-    - location: scripts/stop_server.sh
-      timeout: 300
-      runas: root
-      artifacts:
-  files:
-    - target/nextwork-web-project.war
-    - appspec.yml
-    - scripts/**/*
-  discard-paths: no
-
